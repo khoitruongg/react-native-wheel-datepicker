@@ -8,10 +8,11 @@ const ViewPropTypes = RNViewPropTypes || View.propTypes;
 
 const styles = StyleSheet.create({
   picker: {
-    flex: 1,
+    width: 80,
   },
   row: {
     flexDirection: 'row',
+    justifyContent:'center'
   },
 });
 

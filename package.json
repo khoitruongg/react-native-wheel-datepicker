@@ -25,6 +25,8 @@
   },
   "homepage": "https://github.com/davidgovea/react-native-wheel-datepicker#readme",
   "dependencies": {
+    "@react-native-community/datetimepicker": "^3.5.2",
+    "@react-native-picker/picker": "^1.16.3",
     "moment": "^2.19.1"
   },
   "devDependencies": {
