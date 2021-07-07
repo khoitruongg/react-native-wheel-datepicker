@@ -22,7 +22,7 @@ export default class DatePicker extends PureComponent {
     date: null,
   };
 
-  onDateChange = (date) => {
+  onDateChange = (event, date) => {
     this.setState({ date });
     this.props.onDateChange(date);
   };
@@ -39,7 +39,7 @@ export default class DatePicker extends PureComponent {
     return (
       <DateTimePicker
         {...this.props}
-        onDateChange={this.onDateChange}
+        onChange={this.onDateChange}
         value={this.state.date}
       />
     );
