@@ -254,12 +254,16 @@ export default class DatePicker extends PureComponent {
   get timePicker() {
     const propsStyles = stylesFromProps(this.props);
     const { minuteInterval, use12Hours } = this.props;
+    let {date}= this.state;
 
     const [hours, minutes] = [[], []];
 
     const maxHours = use12Hours ? 12 : 23;
     const minHours = use12Hours ? 1 : 0;
-    let initialHours = this.state.date.getHours();
+
+    let initialHours = date.getHours();
+    let initialMinute = date.getMinutes();
+
     if (use12Hours && initialHours > 12) initialHours -= 12;
     if (use12Hours && initialHours === 0) {
       initialHours = 12;
@@ -286,7 +290,11 @@ export default class DatePicker extends PureComponent {
           {...propsStyles}
           selectedValue={initialHours}
           pickerData={hours}
-          onValueChange={this.onHourChange}
+          onValueChange={(hour)=> {
+            if(hour === initialHours){
+              return
+            }
+            this.onHourChange(hour)}}
         />
       </View>,
       <View key="minute" style={styles.picker}>
@@ -297,7 +305,11 @@ export default class DatePicker extends PureComponent {
           {...propsStyles}
           selectedValue={this.state.date.getMinutes()}
           pickerData={minutes}
-          onValueChange={this.onMinuteChange}
+          onValueChange={(minute)=> {
+            if(minute === initialMinute){
+              return
+            }
+            this.onMinuteChange(minute)}}
         />
       </View>,
       use12Hours && (
